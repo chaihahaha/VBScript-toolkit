@@ -1,4 +1,4 @@
-Dim oClipboard, sapi, message, oldmessage, i
+Dim oClipboard, sapi, message, oldmessage, i, iterations
 
 i = 0
 Set oClipboard = New clsClipboard
@@ -8,7 +8,8 @@ oldmessage = message
 Set sapi= CreateObject("sapi.spvoice")
 Set sapi.Voice = sapi.GetVoices.Item(2)
 
-Do Until i=100
+iterations = CInt(InputBox("How many iterations(1 iteration/s): ","iterations"))
+Do Until i=iterations
 message = oClipboard.GetText
 If message <> oldmessage Then sapi.Speak message
 oldmessage = message
